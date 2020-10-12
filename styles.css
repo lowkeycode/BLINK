@@ -75,42 +75,44 @@ body {
     box-shadow: 0 1px 5px rgba(0, 0, 0, 0.3);
 }
 
+/* CARD */
+
 .card-container {
     grid-column: 4 / -2;
     grid-row: 3 / 8;
     background-color: #fffbf3dd;
     box-shadow: 1px 1px 8px rgba(0, 0, 0, 0.6);
     border-radius: 7px;
+    
 }
 
 /* TODO Set proper grid templates with min content to account for larger font size */
 
 .card {
-    display: grid;
-    grid-template-columns: repeat(5, 1fr);
-    grid-template-rows: repeat(5, 1fr);
+    
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: space-between;
+    height: 100%;
 }
 
 .title {
-    grid-column: 1 / -1;
     align-self: center;
     justify-self: center;
     font-size: 3rem;
+    margin-top: 3rem;
 }
 
 .question {
-grid-column: 1 / -1;
-padding: 0 3rem;
-justify-self: center;
-align-self: center;
-text-align: center;
-font-size: 2rem;
-margin-top: -1rem;
-margin-bottom: 2rem;
+    padding: 0 3rem;
+    justify-self: center;
+    align-self: center;
+    text-align: center;
+    font-size: 2rem;
 }
 
-.answers {
-    grid-column: 2 / 5;
+.answer {
     justify-self: center;
     align-self: center;
     font-size: 1.8rem;
@@ -125,18 +127,12 @@ span {
 }
 
 .controls {
-    grid-column: 1 / -1;
     display: flex;
     justify-content: space-between;
-    align-self: end;
     margin: 0 3rem;
     font-size: 2rem;
-    transition: all .2s;   
-}
-@media only screen and (max-width: 1000px ) {
-    .controls {
-        align-self: start;
-    }
+    transition: all .2s;
+    margin-bottom: 3rem;   
 }
 
 .fa-chevron-left:hover {
@@ -148,6 +144,8 @@ span {
     cursor: pointer;
     color: var(--color-primary-dark);
 }
+
+/* MENU */
 
 .menu-container {
     display: flex;
