@@ -160,12 +160,16 @@ span {
 }
 
 @media only screen and (max-width: 600px) {
+    html {
+        font-size: 50%;
+    }
     .btn-container {
         flex-direction: column;
     }
     .btn-card {
         margin-bottom: 2rem;
     }
+
 }
 /* MENU */
 
