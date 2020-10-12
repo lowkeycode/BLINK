@@ -130,6 +130,7 @@ span {
     justify-content: space-around;
 }
 
+
 .btn-card {
     cursor: pointer;
     align-self: center;
@@ -158,25 +159,14 @@ span {
     box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.6);
 }
 
-.controls {
-    display: flex;
-    justify-content: space-between;
-    margin: 0 3rem;
-    font-size: 2rem;
-    transition: all .2s;
-    margin-bottom: 3rem;   
+@media only screen and (max-width: 600px) {
+    .btn-container {
+        flex-direction: column;
+    }
+    .btn-card {
+        margin-bottom: 2rem;
+    }
 }
-
-.fa-chevron-left:hover {
-    cursor: pointer;
-    color: var(--color-primary-dark);
-}
-
-.fa-chevron-right:hover {
-    cursor: pointer;
-    color: var(--color-primary-dark);
-}
-
 /* MENU */
 
 .menu-container {
