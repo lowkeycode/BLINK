@@ -81,7 +81,8 @@ function getRandomInt(array){
 }
 
 function showCorrespondingAnswer(array) {
-    let int = arrayCounter.length - 1;
+    let int = arrayCounter[arrayCounter.length - 1];
+    console.log(int);
     question.textContent = ``;
     let answer = array[int][1].a;
     question.textContent = answer;
