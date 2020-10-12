@@ -4,6 +4,18 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Blink</title>
+
+
+    <link rel="apple-touch-icon" sizes="180x180" href="./apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="./favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="./favicon-16x16.png">
+    <link rel="manifest" href="./site.webmanifest">
+    <link rel="mask-icon" href="./safari-pinned-tab.svg" color="#5bbad5">
+    <link rel="icon" href="favicon.ico">
+    <meta name="msapplication-TileColor" content="#da532c">
+    <meta name="theme-color" content="#ffffff">
+
+
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css" integrity="sha512-1PKOgIY59xJ8Co8+NE6FZ+LOAZKjy+KY8iq0G4B3CyeY6wYHN3yt9PW0XpSriVlkMXe40PTKnXrLnZ9+fkDaog==" crossorigin="anonymous" />
     <link rel="stylesheet" href="styles.css">
 </head>
@@ -33,7 +45,7 @@
         <div class="card">
             <h1 class="title">Eye Health</h1>
             <!-- Question -->
-            <p class="question">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Minima rerum aut quibusdam voluptas autem voluptatibus libero, placeat facilis possimus aspernatur repellat expedita aliquam ratione est delectus non magnam exercitationem suscipit?</p>
+            <p class="question">Click To Start.</p>
             <!-- Answer -->
         	<!-- <div class="answer">
         	    <ul>
@@ -43,11 +55,17 @@
         	        <li><span>d)</span> Lorem.</li>
         	    </ul>
             </div> -->
-            <!-- Controls -->
-            <div class="controls">
-                <i class="fas fa-chevron-left"></i>
-                <p class="card-counter">1/25</p>
-                <i class="fas fa-chevron-right"></i>
+            <!-- Button -->
+            <div class="btn-container">
+                <button class="btn-card btn-restart" hidden>
+                    Restart
+                </button>
+                <button class="btn-card btn-question">
+                    New Question
+                </button>
+                <button class="btn-card btn-answer" hidden>
+                    Answer
+                </button>
             </div>
         </div>
     </div>
