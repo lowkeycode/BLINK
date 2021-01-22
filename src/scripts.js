@@ -246,46 +246,46 @@ function resetAll() {
   resetTopic();
 }
 
-function getRandomInt(array) {
-  return Math.floor(Math.random() * array.length);
+function getRandomInt(currentConceptArray) {
+  return Math.floor(Math.random() * currentConceptArray.length);
 }
 
-const offerRestart = function (array) {
-  if (array.length === questionTallyArray.length) {
+const offerRestart = function (currentConceptArray) {
+  if (currentConceptArray.length === questionTallyArray.length) {
     btnQuestion.hidden = true;
     btnAnswer.hidden = true;
     setTimeout(showRestartBtn, 2000);
   }
 };
 
-const checkForDuplicateQuestion = function (array) {
-  let int = getRandomInt(array);
-  const randomQuestion = array[int][1].q;
+const checkForDuplicateQuestion = function (currentConceptArray) {
+  let int = getRandomInt(currentConceptArray);
+  const randomQuestion = currentConceptArray[int][1].q;
 
   if (!questionTallyArray.includes(int)) {
     questionTallyArray.push(int);
     // console.log(questionTallyArray);
     question.textContent = randomQuestion;
   } else {
-    getRandomQuestion(array);
+    getRandomQuestion(currentConceptArray);
   }
 };
 
-function getRandomQuestion(array) {
+function getRandomQuestion(currentConceptArray) {
   if (!selectedTopic) return;
 
   btnAnswer.hidden = false;
 
-  checkForDuplicateQuestion(array);
+  checkForDuplicateQuestion(currentConceptArray);
 
-  offerRestart(array);
+  offerRestart(currentConceptArray);
 }
 
-function showCorrespondingAnswer(array) {
+function showCorrespondingAnswer(currentConceptArray) {
   let int = questionTallyArray[questionTallyArray.length - 1];
 //   console.log(int);
   question.textContent = ``;
-  let answer = array[int][1].a;
+  let answer = currentConceptArray[int][1].a;
   question.textContent = answer;
 }
 

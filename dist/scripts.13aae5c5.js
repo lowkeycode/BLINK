@@ -358,43 +358,43 @@ function resetAll() {
   resetTopic();
 }
 
-function getRandomInt(array) {
-  return Math.floor(Math.random() * array.length);
+function getRandomInt(currentConceptArray) {
+  return Math.floor(Math.random() * currentConceptArray.length);
 }
 
-var offerRestart = function offerRestart(array) {
-  if (array.length === questionTallyArray.length) {
+var offerRestart = function offerRestart(currentConceptArray) {
+  if (currentConceptArray.length === questionTallyArray.length) {
     btnQuestion.hidden = true;
     btnAnswer.hidden = true;
     setTimeout(showRestartBtn, 2000);
   }
 };
 
-var checkForDuplicateQuestion = function checkForDuplicateQuestion(array) {
-  var int = getRandomInt(array);
-  var randomQuestion = array[int][1].q;
+var checkForDuplicateQuestion = function checkForDuplicateQuestion(currentConceptArray) {
+  var int = getRandomInt(currentConceptArray);
+  var randomQuestion = currentConceptArray[int][1].q;
 
   if (!questionTallyArray.includes(int)) {
     questionTallyArray.push(int); // console.log(questionTallyArray);
 
     question.textContent = randomQuestion;
   } else {
-    getRandomQuestion(array);
+    getRandomQuestion(currentConceptArray);
   }
 };
 
-function getRandomQuestion(array) {
+function getRandomQuestion(currentConceptArray) {
   if (!selectedTopic) return;
   btnAnswer.hidden = false;
-  checkForDuplicateQuestion(array);
-  offerRestart(array);
+  checkForDuplicateQuestion(currentConceptArray);
+  offerRestart(currentConceptArray);
 }
 
-function showCorrespondingAnswer(array) {
+function showCorrespondingAnswer(currentConceptArray) {
   var int = questionTallyArray[questionTallyArray.length - 1]; //   console.log(int);
 
   question.textContent = "";
-  var answer = array[int][1].a;
+  var answer = currentConceptArray[int][1].a;
   question.textContent = answer;
 }
 
@@ -436,7 +436,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "51170" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "64942" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
