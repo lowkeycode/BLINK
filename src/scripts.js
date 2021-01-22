@@ -264,7 +264,7 @@ const checkForDuplicateQuestion = function (array) {
 
   if (!questionTallyArray.includes(int)) {
     questionTallyArray.push(int);
-    console.log(questionTallyArray);
+    // console.log(questionTallyArray);
     question.textContent = randomQuestion;
   } else {
     getRandomQuestion(array);
@@ -283,7 +283,7 @@ function getRandomQuestion(array) {
 
 function showCorrespondingAnswer(array) {
   let int = questionTallyArray[questionTallyArray.length - 1];
-  console.log(int);
+//   console.log(int);
   question.textContent = ``;
   let answer = array[int][1].a;
   question.textContent = answer;

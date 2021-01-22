@@ -375,8 +375,8 @@ var checkForDuplicateQuestion = function checkForDuplicateQuestion(array) {
   var randomQuestion = array[int][1].q;
 
   if (!questionTallyArray.includes(int)) {
-    questionTallyArray.push(int);
-    console.log(questionTallyArray);
+    questionTallyArray.push(int); // console.log(questionTallyArray);
+
     question.textContent = randomQuestion;
   } else {
     getRandomQuestion(array);
@@ -391,8 +391,8 @@ function getRandomQuestion(array) {
 }
 
 function showCorrespondingAnswer(array) {
-  var int = questionTallyArray[questionTallyArray.length - 1];
-  console.log(int);
+  var int = questionTallyArray[questionTallyArray.length - 1]; //   console.log(int);
+
   question.textContent = "";
   var answer = array[int][1].a;
   question.textContent = answer;
