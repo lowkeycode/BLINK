@@ -1,13 +1,12 @@
 /* eslint-disable */
+const topicMenu = document.querySelector(".menu");
+const topics = document.querySelectorAll(".menu-item");
 const cardTitle = document.querySelector(".title");
 const question = document.querySelector(`.question`);
 const answer = document.querySelector(`.answer`);
 const btnQuestion = document.querySelector(`.btn-question`);
 const btnAnswer = document.querySelector(`.btn-answer`);
 const btnRestart = document.querySelector(`.btn-restart`);
-
-const topicMenu = document.querySelector(".menu");
-const topics = document.querySelectorAll(".menu-item");
 
 const database = {
   semester1: {
@@ -218,7 +217,7 @@ const resetTopic = function () {
   });
 };
 
-const activateTopic = function (e) {
+const activateTopicUI = function (e) {
   if (e.target.classList.contains("menu-item")) {
     resetTopic(e);
 
@@ -236,27 +235,9 @@ const activateTopic = function (e) {
   }
 };
 
-function showRestartBtn() {
-  btnRestart.hidden = false;
-}
-
-function resetAll() {
-  btnRestart.hidden = true;
-  btnQuestion.hidden = false;
-  resetTopic();
-}
-
 function getRandomInt(currentConceptArray) {
   return Math.floor(Math.random() * currentConceptArray.length);
 }
-
-const offerRestart = function (currentConceptArray) {
-  if (currentConceptArray.length === questionTallyArray.length) {
-    btnQuestion.hidden = true;
-    btnAnswer.hidden = true;
-    setTimeout(showRestartBtn, 2000);
-  }
-};
 
 const checkForDuplicateQuestion = function (currentConceptArray) {
   let int = getRandomInt(currentConceptArray);
@@ -271,10 +252,25 @@ const checkForDuplicateQuestion = function (currentConceptArray) {
   }
 };
 
-function getRandomQuestion(currentConceptArray) {
-  if (!selectedTopic) return;
+function showRestartBtn() {
+  btnRestart.hidden = false;
+}
 
-  btnAnswer.hidden = false;
+const offerRestart = function (currentConceptArray) {
+  if (currentConceptArray.length === questionTallyArray.length) {
+    btnQuestion.hidden = true;
+    btnAnswer.hidden = true;
+    setTimeout(showRestartBtn, 2000);
+  }
+};
+
+function getRandomQuestion(currentConceptArray) {
+  if (!selectedTopic) {
+    question.textContent = "Please select a topic.";
+    btnAnswer.hidden = true;
+  } else {
+    btnAnswer.hidden = false;
+  }
 
   checkForDuplicateQuestion(currentConceptArray);
 
@@ -283,22 +279,28 @@ function getRandomQuestion(currentConceptArray) {
 
 function showCorrespondingAnswer(currentConceptArray) {
   let int = questionTallyArray[questionTallyArray.length - 1];
-//   console.log(int);
+  //   console.log(int);
   question.textContent = ``;
   let answer = currentConceptArray[int][1].a;
   question.textContent = answer;
 }
 
+function resetAll() {
+  btnRestart.hidden = true;
+  btnQuestion.hidden = false;
+  resetTopic();
+}
+
+topicMenu.addEventListener("click", activateTopicUI);
+
 btnQuestion.addEventListener(`click`, function () {
   getRandomQuestion(currentTopic);
-});
-
-btnRestart.addEventListener(`click`, function () {
-  resetAll();
 });
 
 btnAnswer.addEventListener(`click`, function () {
   showCorrespondingAnswer(currentTopic);
 });
 
-topicMenu.addEventListener("click", activateTopic);
+btnRestart.addEventListener(`click`, function () {
+  resetAll();
+});

@@ -119,14 +119,14 @@ parcelRequire = (function (modules, cache, entry, globalName) {
   return newRequire;
 })({"src/scripts.js":[function(require,module,exports) {
 /* eslint-disable */
+var topicMenu = document.querySelector(".menu");
+var topics = document.querySelectorAll(".menu-item");
 var cardTitle = document.querySelector(".title");
 var question = document.querySelector(".question");
 var answer = document.querySelector(".answer");
 var btnQuestion = document.querySelector(".btn-question");
 var btnAnswer = document.querySelector(".btn-answer");
 var btnRestart = document.querySelector(".btn-restart");
-var topicMenu = document.querySelector(".menu");
-var topics = document.querySelectorAll(".menu-item");
 var database = {
   semester1: {
     visualacuitytesting: {
@@ -331,7 +331,7 @@ var resetTopic = function resetTopic() {
   });
 };
 
-var activateTopic = function activateTopic(e) {
+var activateTopicUI = function activateTopicUI(e) {
   if (e.target.classList.contains("menu-item")) {
     resetTopic(e);
     e.target.classList.add("active");
@@ -348,27 +348,9 @@ var activateTopic = function activateTopic(e) {
   }
 };
 
-function showRestartBtn() {
-  btnRestart.hidden = false;
-}
-
-function resetAll() {
-  btnRestart.hidden = true;
-  btnQuestion.hidden = false;
-  resetTopic();
-}
-
 function getRandomInt(currentConceptArray) {
   return Math.floor(Math.random() * currentConceptArray.length);
 }
-
-var offerRestart = function offerRestart(currentConceptArray) {
-  if (currentConceptArray.length === questionTallyArray.length) {
-    btnQuestion.hidden = true;
-    btnAnswer.hidden = true;
-    setTimeout(showRestartBtn, 2000);
-  }
-};
 
 var checkForDuplicateQuestion = function checkForDuplicateQuestion(currentConceptArray) {
   var int = getRandomInt(currentConceptArray);
@@ -383,9 +365,26 @@ var checkForDuplicateQuestion = function checkForDuplicateQuestion(currentConcep
   }
 };
 
+function showRestartBtn() {
+  btnRestart.hidden = false;
+}
+
+var offerRestart = function offerRestart(currentConceptArray) {
+  if (currentConceptArray.length === questionTallyArray.length) {
+    btnQuestion.hidden = true;
+    btnAnswer.hidden = true;
+    setTimeout(showRestartBtn, 2000);
+  }
+};
+
 function getRandomQuestion(currentConceptArray) {
-  if (!selectedTopic) return;
-  btnAnswer.hidden = false;
+  if (!selectedTopic) {
+    question.textContent = "Please select a topic.";
+    btnAnswer.hidden = true;
+  } else {
+    btnAnswer.hidden = false;
+  }
+
   checkForDuplicateQuestion(currentConceptArray);
   offerRestart(currentConceptArray);
 }
@@ -398,17 +397,23 @@ function showCorrespondingAnswer(currentConceptArray) {
   question.textContent = answer;
 }
 
+function resetAll() {
+  btnRestart.hidden = true;
+  btnQuestion.hidden = false;
+  resetTopic();
+}
+
+topicMenu.addEventListener("click", activateTopicUI);
 btnQuestion.addEventListener("click", function () {
   getRandomQuestion(currentTopic);
-});
-btnRestart.addEventListener("click", function () {
-  resetAll();
 });
 btnAnswer.addEventListener("click", function () {
   showCorrespondingAnswer(currentTopic);
 });
-topicMenu.addEventListener("click", activateTopic);
-},{}],"node_modules/parcel/src/builtins/hmr-runtime.js":[function(require,module,exports) {
+btnRestart.addEventListener("click", function () {
+  resetAll();
+});
+},{}],"../../../../../../../usr/local/lib/node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
 var OVERLAY_ID = '__parcel__error__overlay__';
 var OldModule = module.bundle.Module;
@@ -436,7 +441,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "64942" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "55647" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
@@ -612,5 +617,5 @@ function hmrAcceptRun(bundle, id) {
     return true;
   }
 }
-},{}]},{},["node_modules/parcel/src/builtins/hmr-runtime.js","src/scripts.js"], null)
+},{}]},{},["../../../../../../../usr/local/lib/node_modules/parcel-bundler/src/builtins/hmr-runtime.js","src/scripts.js"], null)
 //# sourceMappingURL=/scripts.13aae5c5.js.map
